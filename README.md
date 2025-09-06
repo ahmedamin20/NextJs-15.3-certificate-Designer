@@ -42,6 +42,8 @@ src/
 ### 1. Install dependencies
 
 ```bash
+npm install
+#or install packages One by One
 npm install dompurify
 npm install html2canvas
 npm install pdfjs-dist
@@ -146,3 +148,5 @@ import CertificatePrint from "@/app/cert-print/CertificatePrint";
 ## 📜 License
 
 MIT — feel free to use and adapt.
+
+👨‍💻 Developed with ❤️ by **ahmedamin20**
