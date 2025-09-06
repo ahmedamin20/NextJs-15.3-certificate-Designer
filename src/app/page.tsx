@@ -2,6 +2,6 @@ import CertificateDesignerContainer from "@/modules/certificate/cert-designer/co
 
 export default function Home() {
   return (
-    <CertificateDesignerContainer id="" />
+    <CertificateDesignerContainer />
   )
 }

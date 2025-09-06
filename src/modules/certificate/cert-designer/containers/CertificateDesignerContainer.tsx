@@ -1,21 +1,17 @@
 "use client";
-import React from "react";
-import { useCertificateDesigner } from "../logic/useCertificateDesigner";
-import { Toolbar } from "../components/Toolbar";
-import { ControlsPanel } from "../components/ControlsPanel";
-import { CertificateCanvas } from "../components/CertificateCanvas";
-import submitImgUpload from "../logic/submitImgUpload";
-import toast from "react-hot-toast";
-import { eventEmitter } from "@/utils/gloablLoading";
 import { changeLoading } from "@/config/constants/keys";
-import { getImageDims } from "@/utils/getImageDims";
+import { eventEmitter } from "@/utils/gloablLoading";
+import React from "react";
+import toast from "react-hot-toast";
+import { CertificateCanvas } from "../components/CertificateCanvas";
+import { ControlsPanel } from "../components/ControlsPanel";
+import { Toolbar } from "../components/Toolbar";
+import { useCertificateDesigner } from "../logic/useCertificateDesigner";
 import { TCertificateLayoutResponse } from "../types";
 
 export default function CertificateDesignerContainer({
-  id,
   defaultData,
 }: {
-  id: string;
   defaultData?: TCertificateLayoutResponse;
 }) {
   const [state, actions, refs] = useCertificateDesigner();
@@ -41,7 +37,7 @@ export default function CertificateDesignerContainer({
       try {
         eventEmitter.emit(changeLoading, true);
         // uploadPdf now returns { w, h }
-        const { w, h } = await actions.uploadPdf(file);
+      await actions.uploadPdf(file);
         // const res = await submitImgUpload(id, {
         //   template: file,
         //   imgNatural: { w, h },

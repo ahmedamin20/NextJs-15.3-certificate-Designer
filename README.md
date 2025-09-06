@@ -43,8 +43,9 @@ src/
 
 ```bash
 npm install
-#or install packages One by One
+# or install packages One by One
 npm install dompurify
+npm install react-to-print
 npm install html2canvas
 npm install pdfjs-dist
 npm install qrcode.react

@@ -4,6 +4,7 @@ import DOMPurify from 'dompurify';
 import { QRCodeCanvas } from 'qrcode.react';
 import Barcode from 'react-barcode';
 import { LayoutWithData } from '../types';
+import Image from 'next/image';
 
 const safe = (html: string) => ({
   __html: DOMPurify?.sanitize(html, {
@@ -18,7 +19,7 @@ export default function CertificateFromJsonView({ layout, hideTemplate }: { layo
   return (
     <div className="relative block w-full h-full overflow-hidden">
       {layout.templateUrl && !hideTemplate ? (
-        <img src={layout.templateUrl} className="template-image w-full h-auto" alt="Certificate" />
+        <Image fill src={layout.templateUrl} className="template-image w-full h-auto" alt="Certificate" />
       ) : (
         <div className="w-full h-full bg-white" />
       )}
@@ -39,7 +40,7 @@ export default function CertificateFromJsonView({ layout, hideTemplate }: { layo
           return (
             <div key={f.id} style={style}>
               {isLikelyUrl(v) ? (
-                <img src={v} alt={f.key} style={{ maxWidth: '100%', height: 'auto' }} />
+                <Image fill src={v} alt={f.key} style={{ maxWidth: '100%', height: 'auto' }} />
               ) : (
                 <div dangerouslySetInnerHTML={safe(String(v))} />
               )}

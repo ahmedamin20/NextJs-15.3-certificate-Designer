@@ -3,8 +3,8 @@ import React from "react";
 import { DesignerActions, DesignerState, Field, FieldType, REQUIRED_PRESETS } from "../types";
 
 export function ControlsPanel({ state, actions }: { state: DesignerState; actions: DesignerActions }) {
-  const { showGrid, snapToGrid, gridSizePct, activeId, fields, templateUrl } = state;
-  const { setShowGrid, setSnapToGrid, setGridSizePct, addPresetField, addCustomTextField, addQrField, setField, removeActive, setActiveId, importLayoutFile } = actions;
+  const { showGrid, snapToGrid, gridSizePct, activeId, fields } = state;
+  const { setShowGrid, setSnapToGrid, setGridSizePct, addPresetField, addCustomTextField, addQrField, setField, removeActive, importLayoutFile } = actions;
   const activeField: Field | undefined = fields.find((f) => f.id === activeId);
 
   const handleFileInput: React.ChangeEventHandler<HTMLInputElement> = async (e) => {

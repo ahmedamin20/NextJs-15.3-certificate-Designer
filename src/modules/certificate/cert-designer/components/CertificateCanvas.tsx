@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
 import type { DesignerState, DesignerActions, Field } from "../types";
+import Image from "next/image";
 
 export function CertificateCanvas({ state, actions, refs }: { state: DesignerState; actions: DesignerActions; refs: { containerRef: React.MutableRefObject<HTMLDivElement | null>; imgRef: React.MutableRefObject<HTMLImageElement | null>; renderRef: React.MutableRefObject<HTMLDivElement | null>; imgClientRect: { x: number; y: number; w: number; h: number } | null; activeField: Field | null; } }) {
-  const { containerRef, imgRef, renderRef, imgClientRect, activeField } = refs;
+  const { containerRef, imgRef, renderRef } = refs;
   const { templateUrl, showGrid, isExporting, zoom, imgNatural, fields, activeId } = state;
   const { onImgLoad, startDrag, moveDrag, endDrag, startResize, moveResize, endResize, setActiveId, viewportPointerDown, viewportPointerMove, viewportPointerUp } = actions;
   const fieldStyle = (f: Field): React.CSSProperties => ({
@@ -57,7 +58,7 @@ export function CertificateCanvas({ state, actions, refs }: { state: DesignerSta
         ) : (
           <div className="inline-block" style={{ transform: `scale(${zoom})`, transformOrigin: "top left" }}>
             <div ref={renderRef} className="relative inline-block">
-              <img ref={imgRef} src={templateUrl} onLoad={onImgLoad} alt="Certificate Template" className="max-w-full h-auto select-none pointer-events-none rounded" />
+              <Image fill ref={imgRef} src={templateUrl} onLoad={onImgLoad} alt="Certificate Template" className="max-w-full h-auto select-none pointer-events-none rounded" />
               {gridOverlay}
               {imgNatural && fields.map((f) => (
                 <div

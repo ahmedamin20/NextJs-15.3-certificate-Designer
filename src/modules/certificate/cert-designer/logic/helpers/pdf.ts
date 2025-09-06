@@ -14,7 +14,7 @@ export async function rasterizePdfFirstPage(
   if (!ctx) throw new Error("Canvas context unavailable");
   canvas.width = viewport.width;
   canvas.height = viewport.height;
-  await page.render({ canvasContext: ctx, viewport }).promise;
+  await page.render({ canvasContext: ctx, viewport, canvas }).promise;
   return {
     dataUrl: canvas.toDataURL("image/png"),
     w: canvas.width,
